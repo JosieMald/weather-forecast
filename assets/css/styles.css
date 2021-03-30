@@ -1,3 +1,22 @@
-p {
-    color: red;
+h4 {
+    padding-top: 10px;
+}
+
+
+.weather-stats {
+    border: 1px solid #D7D0D2;
+    margin-left: 33.3%;
+    border-radius: 2px;
+    
+    
+}
+
+.forecast {
+    margin-left: 33.3%;
+}
+
+#search-bar{
+border: 1px solid #D7D0D2;
+float: left;
+border-radius: 2px;
 }
