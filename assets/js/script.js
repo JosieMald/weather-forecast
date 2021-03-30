@@ -12,6 +12,13 @@ $(document).ready($(".searchBtn").on("click", function(event) {
         return response.json();
     }).then(function (data) {
         console.log(data);
+        console.log(data.name);
+        console.log(data.main.temp);
+        console.log(data.main.humidity);
+        console.log(data.wind.speed);
+        console.log(data.coord.lon);
+        console.log(data.coord.lat);
+        var uvIndexURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + {lat} + "&lon=" + {lon} + "&appid=" + apiKey
     })
 }));
 
