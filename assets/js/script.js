@@ -1,12 +1,12 @@
 var searchBar = $("#search-bar");
 var searchTermEl = $("#search-term");
-var apiKey = "ee576a8bcd80830440ad2e16c65599ee" 
+var apiKey = "d84e1509129ac5ce8200b78e8284de7b" 
 
 $(document).ready($(".searchBtn").on("click", function(event) {
     event.preventDefault();
     var searchTerm = searchTermEl.val();
     console.log(searchTerm);
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&appid=" + apiKey;
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&appid=" + apiKey + "&units=imperial";
     console.log(queryURL);
     fetch(queryURL).then(function (response) {
         return response.json();
