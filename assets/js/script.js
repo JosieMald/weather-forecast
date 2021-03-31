@@ -22,7 +22,7 @@ $(document).ready(function(event) {
     function createMenuItem(text){
         var li = $("<li>").text(text).addClass("list-group-item");
         $(".list-group").append(li);
-    }
+    };
 
     function searchWeather(searchTerm) {
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&appid=" + apiKey + "&units=imperial";
@@ -32,17 +32,17 @@ $(document).ready(function(event) {
         return response.json();
     }).then(function (data) {
         var cityDateDisplay = data.name + " " + currentDate; // was displayDate but kept logging object 
-        // console.log(cityDateDisplay);
+        var temp = $("<p>").text("Temperature: " + data.main.temp);
+        var humidity = $("<p>").text("Humidity: " + data.main.humidity);
+        var windSpeed = $("<p>").text("Wind Speed: " + data.wind.speed);
         $(".city-date").append(cityDateDisplay);
+        $(".temperature").append(temp);
+        $(".humidity").append(humidity);
+        $(".wind-speed").append(windSpeed);
         // console.log(data);
-        // console.log(data.name);
-        // console.log(data.main.temp);
-        // console.log(data.main.humidity);
-        // console.log(data.wind.speed);
         // console.log(data.coord.lon);
         // console.log(data.coord.lat);
         getForecast(data.coord.lat, data.coord.lon);
-        // var uvIndexURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + {lat} + "&lon=" + {lon} + "&appid=" + apiKey
     })
 }
 function getForecast(lat,lon){
@@ -50,12 +50,16 @@ function getForecast(lat,lon){
     fetch(queryURL).then(function (response) {
         return response.json();
     }).then(function (data) {
+        console.log(data);
+        var uvIndex = $("<p>").text("UV Index: " + data.current.uvi);
+        console.log(data.current.uvi);
+        $(".uv-index").append(uvIndex);
         for( var i = 1; i < 6; i++){
             console.log(data.daily[i]);
             var card = $("<div>").addClass("card").attr("style", "border: 1px solid black")
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h5>").addClass("card-title").text(moment.unix(data.daily[i].dt).format("dddd"));
-
+            
             $(".forecast").append(card.append(cardBody.append(cardTitle)));
         }
 })
