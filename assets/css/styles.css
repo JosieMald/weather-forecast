@@ -1,7 +1,10 @@
+/* Universal Elements */
+
 h4 {
     padding-top: 10px;
 }
 
+/* Element Classes */
 
 .weather-stats {
     border: 1px solid #D7D0D2;
@@ -13,6 +16,8 @@ h4 {
 .forecast {
     margin-left: 33.3%;
 }
+
+/* Element IDs */
 
 #search-bar{
 border: 1px solid #D7D0D2;
