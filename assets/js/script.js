@@ -63,8 +63,9 @@ function getForecast(lat,lon){
             var card = $("<div>").addClass("card").attr("style", "border: 1px solid black");
             var cardBody = $("<div>").addClass("card-body");
             var cardTitle = $("<h5>").addClass("card-title").text(moment.unix(data.daily[i].dt).format("L"));
-            
-            $(".forecast").append(card.append(cardBody.append(cardTitle)));
+            var cardTemp = $("<h6>").addClass("card-temp").text("Temp: " + data.daily[i].temp.day + " °F");
+            var cardHumid = $("<h6>").addClass("card-humid").text("Humidity: " + data.daily[i].humidity + " %");
+            $(".forecast").append(card.append(cardBody.append(cardTitle.append(cardTemp.append(cardHumid)))));
         }
 })
 }
